@@ -15,6 +15,7 @@ class RatedShipment
     public $RatedPackage;
     public $SurCharges;
     public $TimeInTransit;
+    public $ItemizedCharges;
 
     /**
      * @var NegotiatedRates|null
@@ -30,6 +31,7 @@ class RatedShipment
         $this->TotalCharges = new Charges();
         $this->RatedPackage = [];
         $this->SurCharges = [];
+        $this->ItemizedCharges = [];
 
         if (null !== $response) {
             if (isset($response->Service)) {
@@ -64,6 +66,10 @@ class RatedShipment
                 } else {
                     $this->RatedPackage[] = new RatedPackage($response->RatedPackage);
                 }
+            }
+
+            if(isset($response->ItemizedCharges)){
+                $this->ItemizedCharges = $response->ItemizedCharges;
             }
 
             if (isset($response->SurCharges)) {
