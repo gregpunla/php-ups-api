@@ -9,6 +9,7 @@ class RatedPackage
     public $TransportationCharges;
     public $ServiceOptionsCharges;
     public $TotalCharges;
+    public $ItemizedCharges;
 
     /**
      * @param \stdClass|null $response
@@ -20,6 +21,7 @@ class RatedPackage
         $this->ServiceOptionsCharges = new Charges();
         $this->TotalCharges = new Charges();
         $this->Weight = '0.0';
+        $this->ItemizedCharges = [];
 
         if (null !== $response) {
             if (isset($response->Weight)) {
@@ -36,6 +38,9 @@ class RatedPackage
             }
             if (isset($response->TotalCharges)) {
                 $this->TotalCharges = new Charges($response->TotalCharges);
+            }
+            if(isset($response->ItemizedCharges)){
+                $this->ItemizedCharges = $response->ItemizedCharges;
             }
         }
     }
