@@ -10,11 +10,6 @@ class Shipment
     private $paymentInformation;
 
     /**
-     * @var ItemizedPaymentInformation
-     */
-    private $itemizedPaymentInformation;
-
-    /**
      * @var RateInformation
      */
     private $rateInformation;
@@ -103,11 +98,6 @@ class Shipment
      * @var InvoiceLineTotal
      */
     private $invoiceLineTotal;
-    
-    /**
-     * @var ShipmentTotalWeight
-     */
-    private $shipmentTotalWeight;
 
     /**
      * @var string
@@ -435,26 +425,6 @@ class Shipment
     }
 
     /**
-     * @return ItemizedPaymentInformation
-     */
-    public function getItemizedPaymentInformation()
-    {
-        return $this->itemizedPaymentInformation;
-    }
-
-    /**
-     * @param ItemizedPaymentInformation $itemizedPaymentInformation
-     *
-     * @return Shipment
-     */
-    public function setItemizedPaymentInformation(ItemizedPaymentInformation $itemizedPaymentInformation)
-    {
-        $this->itemizedPaymentInformation = $itemizedPaymentInformation;
-
-        return $this;
-    }
-
-    /**
      * If called, returned prices will include negotiated rates (discounts will be applied).
      */
     public function showNegotiatedRates()
@@ -573,21 +543,5 @@ class Shipment
     public function setDeliveryTimeInformation(DeliveryTimeInformation $deliveryTimeInformation)
     {
         $this->deliveryTimeInformation = $deliveryTimeInformation;
-    }
-    
-    /**
-     * @return ShipmentTotalWeight
-     */
-    public function getShipmentTotalWeight()
-    {
-        return $this->shipmentTotalWeight;
-    }
-
-    /**
-     * @param ShipmentTotalWeight $shipmentTotalWeight
-     */
-    public function setShipmentTotalWeight(ShipmentTotalWeight $shipmentTotalWeight)
-    {
-        $this->shipmentTotalWeight = $shipmentTotalWeight;
     }
 }
